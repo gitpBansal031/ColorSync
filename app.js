@@ -1,70 +1,133 @@
-let body=document.querySelector("body");
-let h2=document.querySelector("h2");
-let red=document.querySelector(".red");
-let blue=document.querySelector(".blue");
-let green=document.querySelector(".green");
-let yellow=document.querySelector(".yellow");
-let start=0;
-let level=0;
-let count=0;
-let color=["red","yellow","blue","green"];
-let gameArr=[];
-let selColor="";
-document.addEventListener("keypress",startGame);
+/* -----------------------------------------------
+/* How to use? : Check the GitHub README
+/* ----------------------------------------------- */
 
-function blink(color){
-    let box=document.querySelector(`.${color}`);
-    box.classList.add("white");
-    setTimeout(() => {
-        box.classList.remove("white")
-    }, 250);
-}
-function userColor(){
-    let userColor=this.classList[1];
-    blink(userColor);
-    let expColor=gameArr[count];
-    if(userColor!=expColor){
-        gameArr=[];
-        gameOver();
-    }else{
-        count++;
-        if(count==level){
-            body.classList.add("gray");
-            setTimeout(() => {
-                body.classList.remove("gray")
-            }, 500);
-            setTimeout(()=>{
-                upgradeLevel();
-            },1000);
+/* To load a config file (particles.json) you need to host this demo (MAMP/WAMP/local)... */
+/*
+particlesJS.load('particles-js', 'particles.json', function() {
+  console.log('particles.js loaded - callback');
+});
+*/
+
+/* Otherwise just put the config content (json): */
+
+particlesJS('particles-js',
+  
+    {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#000000"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          },
+          "image": {
+            "src": "img/github.svg",
+            "width": 100,
+            "height": 100
+          }
+        },
+        "opacity": {
+          "value": 0.5,
+          "random": false,
+          "anim": {
+            "enable": false,
+            "speed": 1,
+            "opacity_min": 0.1,
+            "sync": false
+          }
+        },
+        "size": {
+          "value": 5,
+          "random": true,
+          "anim": {
+            "enable": false,
+            "speed": 40,
+            "size_min": 0.1,
+            "sync": false
+          }
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#000000",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 6,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "attract": {
+            "enable": false,
+            "rotateX": 600,
+            "rotateY": 1200
+          }
         }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "repulse"
+          },
+          "onclick": {
+            "enable": true,
+            "mode": "push"
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 400,
+            "line_linked": {
+              "opacity": 1
+            }
+          },
+          "bubble": {
+            "distance": 400,
+            "size": 40,
+            "duration": 2,
+            "opacity": 8,
+            "speed": 3
+          },
+          "repulse": {
+            "distance": 200
+          },
+          "push": {
+            "particles_nb": 4
+          },
+          "remove": {
+            "particles_nb": 2
+          }
+        }
+      },
+      "retina_detect": true,
+      "config_demo": {
+        "hide_card": false,
+        "background_color": "#000000",
+        "background_image": "",
+        "background_position": "50% 50%",
+        "background_repeat": "no-repeat",
+        "background_size": "cover"
+      }
     }
-}
-function gameBox(random){
-    selColor=color[random];
-    gameArr.push(selColor);
-    blink(selColor);
-}
-function upgradeLevel(){
-    count=0;
-    level++;
-    h2.innerText=`Level ${level}`;
-    let random=Math.floor(Math.random()*4);
-    gameBox(random);
-}
-function gameOver(){
-    h2.innerText=`Game Over ! Your Score is ${level-1} ! Press any key to play`;
-    document.addEventListener("keypress",startGame);
-    red.removeEventListener("click",userColor);
-    blue.removeEventListener("click",userColor);
-    yellow.removeEventListener("click",userColor);
-    green.removeEventListener("click",userColor);
-}
-function startGame(){
-    level=0;
-    document.removeEventListener("keypress",startGame);
-    red.addEventListener("click",userColor);
-    blue.addEventListener("click",userColor);
-    yellow.addEventListener("click",userColor);
-    green.addEventListener("click",userColor);
-    upgradeLevel();
-}
+  
+  );
