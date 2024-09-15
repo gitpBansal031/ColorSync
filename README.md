@@ -1,1 +1,3 @@
-# SimonGame
+# ColorSync
+#### It is a classic memory game that tests a player's ability to recall and replicate sequences. The game features four colored buttons—each. The objective is to correctly follow the game's increasing sequence of button presses, which is displayed through flashing lights. 
+#### In the version made using HTML, CSS, and JavaScript, players interact with a digital version of the ColorSync. When the game starts, one of the four buttons (red, blue, green, or yellow) lights up, and the player must press the same button. As the game progresses, the sequence grows by one additional button each round, becoming progressively more difficult. The player must replicate the entire sequence without making a mistake to continue.
